@@ -19,24 +19,24 @@ mongoose
   .then((con) => {
     console.log("DB connection successfull");
   });
+// .catch((err) => console.log("ERROR", err));
 
-// const testTour = new Tour({
-//   name: "Goa",
-//   rating: 4.7,
-//   price: 497,
-// });
+const port = process.env.PORT || 3000;
 
-// testTour
-//   .save()
-//   .then((doc) => {
-//     console.log(doc);
-//   })
-//   .catch((err) => {
-//     console.log("ERROR",err); 
-//   });
-
-const port = 3000;
-console.log(process.env);
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log("App running in port", port);
+});
+
+process.on("unhandledRejection", (err) => {
+  console.log(err.name, err.message);
+  server.close(() => {
+    process.exit(1);
+  });
+});
+
+process.on("uncaughtException", (err) => {
+  console.log("UNCOUGHT EXCEPTION", err.message);
+  server.close(() => {
+    process.exit(1);
+  });
 });

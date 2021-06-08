@@ -4,20 +4,27 @@
   "description": "Learning node, express and mongoDB",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "start:prod": "NODE_ENV=production nodemon server.js",
+    "debug": "ndb server.js"
   },
   "author": "Prasanth",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.16",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.6.1",
+    "slugify": "^1.5.3"
   },
   "devDependencies": {
+    "ndb": "^1.1.5",
     "nodemon": "^2.0.7"
   },
   "engines": {
-    "node":">=10.0.0"
+    "node": ">=10.0.0"
   }
 }
